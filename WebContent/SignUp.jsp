@@ -84,7 +84,7 @@
 %>
 
 
-<%
+<!--%
 	User user = (User)request.getAttribute("user");
 
       out.println("(1)Userテーブルに追加された行");
@@ -92,7 +92,7 @@
 
       boolean addUser_success = (Boolean)request.getAttribute("addUser_success");
       out.println(" " + addUser_success);
-%>
+--%>
 <!-- %@ include file="Return.jsp" % -->
 </body>
 </html>

@@ -73,13 +73,13 @@ public class BoardDAO {
     }
     private Board makeInstanceFromRow(ResultSet rs) throws SQLException {
 
-
     	Board result = new Board();
         result.setId(rs.getInt("id"));
         result.setUserID(rs.getString("userID"));
         result.setContent(rs.getString("content"));
         result.setBi(rs.getString("bi"));
         result.setCno(rs.getInt("cno"));
+        result.setGazou(rs.getString("gazou"));
         return result;
     }
 
@@ -90,14 +90,15 @@ public class BoardDAO {
         SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd H:mm:ss");
     	board.setBi(format.format(today));
 
-    	String sql = "insert into board (userID, content, bi,cno)  " +
-                " values(?, ?, ?,?)";
+    	String sql = "insert into board (userID, content, bi,cno ,gazou)  " +
+                " values(?, ?, ?, ?, ?)";
         PreparedStatement stmt = con.prepareStatement(sql);
         // 入力パラメータに値をセットする ----
         stmt.setString(1, board.getUserID());
         stmt.setString(2, board.getContent());
         stmt.setString(3, board.getBi());
         stmt.setInt(4, board.getCno());
+        stmt.setString(5, board.getGazou());
         // SQL文を実行する
         stmt.executeUpdate();
         stmt.close();
@@ -123,6 +124,7 @@ public class BoardDAO {
     		Board board = new Board();
     		board.setUserID("adf");
     		board.setContent("コメント2");
+    		board.setGazou("aa.png");
 
     		//1件追加
     	    boardDAO.insertBoard(board);

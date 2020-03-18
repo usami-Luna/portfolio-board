@@ -66,6 +66,7 @@ public class SignUpServlet extends HttpServlet {
             //　　この状態となります。
 
             //ログイン成功したか？
+            int error = 1;
             if(signOn ) {
             	boardSiteSession.setSignOn(userID);  //①
             	resultPage = "/UserRegistrationProcess.jsp"; //forward先jsp名
@@ -83,8 +84,8 @@ public class SignUpServlet extends HttpServlet {
                 //これにより、
                 //ログインされていない状態となります。★
             	boardSiteSession.setSignOff();
+            	error = 1;
             	resultPage = "/SignUp.jsp"; //forward先jsp名
-            	int error = 1;
             	request.setAttribute("error", error);
             }
 

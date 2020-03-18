@@ -7,6 +7,7 @@ public class Board {
 	String content;
 	String bi;
 	int cno;
+	String gazou;
 
 	  /**
 	  * @return id
@@ -66,9 +67,22 @@ public class Board {
 		this.cno = cno;
 	}
 
+
+
+	public String getGazou() {
+		return gazou;
+	}
+
+	public void setGazou(String gazou) {
+		this.gazou = gazou;
+	}
+
+
+
 	@Override
 	public String toString() {
-		return "Board [id=" + id + ", name=" + userID + ", content=" + content + ", bi=" + bi + "]";
+		return "Board [id=" + id + ", userID=" + userID + ", content=" + content + ", bi=" + bi + ", cno=" + cno
+				+ ", gazou=" + gazou + "]";
 	}
 
 	public static void main(String[] args) {

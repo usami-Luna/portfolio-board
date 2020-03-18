@@ -22,11 +22,11 @@
 	List<Board> boards = (List<Board>)request.getAttribute("list");
 	int bordlist;
 
-	for (int i = 0; i < boards.size(); i++) {
-		System.out.println(boards.get(i).getUserID());
-		System.out.println(boards.get(i).getContent());
-		System.out.println(boards.get(i).getBi());
-	}
+//	for (int i = 0; i < boards.size(); i++) {
+//		System.out.println(boards.get(i).getUserID());
+//		System.out.println(boards.get(i).getContent());
+//		System.out.println(boards.get(i).getBi());
+//	}
 //	session.setAttribute("bordlist", bordlist);
 
 	try {
@@ -85,16 +85,19 @@
 
 <p>こんにちは！！<%=boardSiteSession.getUserID()%>様</p>
 
-<form method="POST" action="insert">
-	<input type="hidden" name="blist" value="<%= bordlist %>"> <!--  -->
+<form method="POST" action="insert"  enctype="multipart/form-data" >
+	<input type="hidden" name="blist" value="<%= bordlist %>"> <!-- type="hidden" -->
     <!-- label for="name">名前</label><br />
     <input type="text" name="name"/>
     <br /><br /> -->
     <label for="content">メッセージ</label><br />
     <textarea name="content" class="area" ></textarea>
     <br /><br />
+    <input type="file" name="file"/><br />
+    <br /><br />
     <button type="submit">投稿</button>
   </form>
+
 <%-- session.setAttribute("boardSiteSession", boardSiteSession); --%>
 
 
@@ -110,6 +113,15 @@
 <tr><td BGCOLOR="#ffffff">
 <p>投稿者 <b><%= boards1.getUserID() %></b> さん　<font SIZE="2"> .... <%= boards1.getBi() %></font></p>
 <pre><p><%= boards1.getContent() %></p>
+
+<%
+	if(boards1.getGazou() != null) {
+%>
+		<p><img src="upload/<%= boards1.getGazou() %>" alt="Simple Site" max-width="50px"> </p>
+<%
+    }
+%>
+
 </pre></td></tr>
 </table>
 
